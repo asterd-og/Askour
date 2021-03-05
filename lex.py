@@ -33,7 +33,7 @@ class Lexer:
 					self.tokens.append(f"String {string}\"")
 					string = ""
 					isstr = 0
-					tok = ""
+					token = ""
 			elif isstr == 1:
 				string += token
 				token = ""
