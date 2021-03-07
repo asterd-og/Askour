@@ -1,10 +1,9 @@
 # Askour
-Just a "programming" language made in python
-made in one day...
-without any tutorial!
+Askour programming language is now in 0.0.2!
 
-Commands in the language so far:
-  print "text"
-
-
-Askour Version 0.0.1
+Askour have:
+  print
+  if statement
+  variables
+  numbers
+  math
