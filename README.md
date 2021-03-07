@@ -17,3 +17,8 @@ Example:\
 @b = @a   --a var inside of a var\
 input "Your name> " @name --a var named name, that will have the innput answer\
 print @name --print name
+
+---------------------------------------------
+current working on:\
+  comments\
+  if statementn
