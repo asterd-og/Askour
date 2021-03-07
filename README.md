@@ -9,6 +9,8 @@ Askour have:
   input
   math
 
+---------------------------------------------
+
 Example:
 @a = "10" --string
 @n = 10   --number
