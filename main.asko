@@ -1,0 +1,4 @@
+@name = "Asterd"
+@number = 5
+@i      = 10 / 2
+print @i
