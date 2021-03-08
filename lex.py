@@ -106,6 +106,6 @@ def Lex(file):
 		elif isstr == 1:
 			string += token
 			token = ""
-	print(tokens)
+	#print(tokens)
 	#return ''
 	return tokens
