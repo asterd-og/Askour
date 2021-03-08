@@ -21,4 +21,6 @@ print @name --print name
 ---------------------------------------------
 current working on:\
   comments\
+  icon\
+  title\
   if statement
