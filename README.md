@@ -22,7 +22,7 @@ print @name --print name
 current working on:\
   comments\
   icon\
-  \ttitle\
+  ~title~\
   if statement
 
 ---------------------------------------------
