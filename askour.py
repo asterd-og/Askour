@@ -1,6 +1,8 @@
 from lex import *
 from par import *
 from sys import *
+import os
+os.system("title Askour")
 
 def openfile(filename):
 	data = open(filename, "r").read()
