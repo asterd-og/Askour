@@ -24,3 +24,6 @@ current working on:\
   icon\
   title\
   if statement
+
+---------------------------------------------
+Thanks if you starred this project
