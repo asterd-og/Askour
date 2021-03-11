@@ -24,3 +24,12 @@ current working on:\
   icon\
   ~~title~~\
   if statement
+
+---------------------------------------------
+how to run:\
+  1. open main.py
+  2. run with python
+  3. to make modifications:
+    1. edit main.asko
+    2. save
+    3. run main.py
