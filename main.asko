@@ -1,4 +1,14 @@
-@name = "Asterd"
-@number = 5
-@i      = 10 / 2
-print @i
+@string = "string 1"
+@int    = 12
+@name   = "asterd"
+@age    = @int
+print "name>"
+print @name
+print "age>"
+print @age
+input "enter your name> " @namei
+input "enter your age> " @agei
+print "name>"
+print @namei
+print "age>"
+print @agei
