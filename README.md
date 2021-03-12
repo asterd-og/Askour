@@ -1,5 +1,5 @@
 # Askour
-Askour programming language is now in 0.0.2!
+Askour programming language is now in 0.0.3!
 
 Askour have:\
   print\
