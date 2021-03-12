@@ -1,21 +1,12 @@
 from lex import *
 from par import *
-from sys import *
+import sys
 import os
-os.system("title Askour")
-
+os.system('title Askour')
 def openfile(filename):
 	data = open(filename, "r").read()
 	data += "<EOF>"
 	return data
-
-def isopenfile():
-	if(argv[1]):
-		return True
-	else:
-		return False
-
-if isopenfile():
-	d = openfile(argv[1])
-	t = Lex(d)
-	p = parse(t)
+data = openfile(sys.argv[1])
+l = Lex(data)
+p = parse(l)

@@ -2,9 +2,11 @@ tokens = []
 symbols= {}
 
 def Lex(file):
+	comment      = ""
 	token  		 = ""
 	isstr  		 = 0
 	iexpr        = 0
+	iscm         = 0
 	vst          = 0
 	var          = ""
 	string 		 = ""
@@ -70,6 +72,10 @@ def Lex(file):
 		elif token == "endif":
 			tokens.append("endif")
 			token = ""
+		#clear
+		elif token == "clear":
+			tokens.append("clear")
+			token = ""
 		#if
 		elif token.lower() == "if":
 			tokens.append("if")
@@ -81,6 +87,13 @@ def Lex(file):
 				expr = ""
 			tokens.append("then")
 			token = ""
+		#comments
+		# elif token == "#com":
+			# tokens.append("comment")
+			# token = ""
+		#elif iscm == 1:
+		#	comment += token
+		#	token = ""
 		#expressions
 		elif token in "0123456789":
 			expr += token
@@ -106,6 +119,6 @@ def Lex(file):
 		elif isstr == 1:
 			string += token
 			token = ""
-	#print(tokens)
-	#return ''
+	# print(tokens)
+	# return ''
 	return tokens

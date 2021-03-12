@@ -1,4 +1,5 @@
 from lex import symbols
+import os
 
 def evalexpr(teval):
 	return eval(teval)
@@ -28,12 +29,24 @@ def gi(st, varn):
 	r = input(st[1:-1] + " ")
 	symbols[varn] = f"string:\"{r}\""
 
+def doclear():
+	if os.name == "nt":
+		os.system("cls")
+	else:
+		os.system("clear")
+
+isif = 0
+
 def parse(tokens):
 	t = 0
 	while t<len(tokens):
 		#endif
-		if tokens[t] == "endif":
-			t += 1
+		if tokens[t] == "endif" or tokens[t] == "clear":
+			if tokens[t] == "endif":
+				isif = 0
+			elif tokens[t] == "clear":
+				doclear()
+			t+=1
 		#print
 		elif tokens[t] + " " + tokens[t+1][0:6] == "print string" or tokens[t] + " " + tokens[t+1][0:3] == "print num" or tokens[t] + " " + tokens[t+1][0:4] == "print expr" or tokens[t] + " " + tokens[t+1][0:3] == "print var":
 			if tokens[t+1][0:6] == "string":
@@ -62,9 +75,14 @@ def parse(tokens):
 			t+=3
 		#conditions
 		elif tokens[t] + " " + tokens[t+1][0:3] + " " + tokens[t+2]  + " " + tokens[t+3][0:3] + " " + tokens[t+4] == "if num eqeq num then":
+			isif = 1
 			if tokens[t+1][4:] == tokens[t+3][4:]:
-				print("Ok")
+				pass
 			else:
-				print("false")
+				while tokens[t] != "endif":
+					if tokens == "endif":
+						index = t
+						tokens.pop(index)
+					else:
+						pass
 			t+=5
-	#print(symbols)
