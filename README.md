@@ -4,6 +4,8 @@ Askour programming language is now in 0.0.3!
 Askour have:\
   print\
   if statement (now working, but only with numbers)\
+  pause\
+  clear\
   variables\
   numbers\
   input\
@@ -12,17 +14,7 @@ Askour have:\
 ---------------------------------------------
 
 Example:\
-@a = "10" --string\
-@n = 10   --number\
-@b = @a   --a var inside of a var\
-input "Your name> " @name --a var named name, that will have the innput answer\
-if 1 == 1 then
-  print "Hello world"
-endif
-if 2 == 1 then
-  print "Math is wrong..."
-endif
-print @name --print name
+Look into main.asko
 
 ---------------------------------------------
 current working on:\
