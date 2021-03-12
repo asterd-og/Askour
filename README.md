@@ -1,5 +1,5 @@
 # Askour
-Askour programming language is now in 0.0.3!
+Askour programming language is now in 0.0.7!
 
 Askour have:\
   print\
@@ -20,7 +20,7 @@ Look into main.asko
 ---------------------------------------------
 current working on:\
   ~~comments~~\
-  icon\
+  ~~icon~~\
   ~~title~~\
   ~~if statement~~
 
@@ -32,3 +32,5 @@ how to run:
     1. edit main.asko\
     2. save\
     3. run main.py
+
+![first](https://user-images.githubusercontent.com/73673156/111002374-165b9100-8364-11eb-8c88-6cb5f23dec81.png)
