@@ -9,4 +9,4 @@ def open_file(filename):
 d = open_file('main.asko')
 t = Lex(d)
 p = parse(t)
-
+input()

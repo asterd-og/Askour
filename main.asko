@@ -1,11 +1,4 @@
-clear
-
-if 1==1 then
-	print "hello hello B]"
-endif
-
-if 4 == 4 then
-	print "hello hello"
-endif
-
-print "oi"
+@varint = 10
+@mystring = @varint
+print @varint
+print @mystring

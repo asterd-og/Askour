@@ -88,13 +88,16 @@ def Lex(file):
 			tokens.append("then")
 			token = ""
 		#comments
-		# elif token == "#com":
-			# tokens.append("comment")
-			# token = ""
-		#elif iscm == 1:
-		#	comment += token
-		#	token = ""
-		#expressions
+		elif token == "$":
+			if iscm == 0:
+				iscm = 1
+			elif iscm == 1:
+				comment += token
+				tokens.append(f"comment:{comment}")
+				comment = ""
+				iscm = 0
+				token = ""
+		#numbers
 		elif token in "0123456789":
 			expr += token
 			token = ""
@@ -118,6 +121,10 @@ def Lex(file):
 		#string
 		elif isstr == 1:
 			string += token
+			token = ""
+		#comment
+		elif iscm == 1:
+			comment += token
 			token = ""
 	# print(tokens)
 	# return ''

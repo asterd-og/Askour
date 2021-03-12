@@ -40,13 +40,16 @@ isif = 0
 def parse(tokens):
 	t = 0
 	while t<len(tokens):
-		#endif
-		if tokens[t] == "endif" or tokens[t] == "clear":
+		#endif, clear and others commands that is less than 1 param
+		if tokens[t] == "endif" or tokens[t] == "clear" or tokens[t][0:7] == "comment":
 			if tokens[t] == "endif":
 				isif = 0
+				t+=1
 			elif tokens[t] == "clear":
 				doclear()
-			t+=1
+				t+=1
+			else:
+				t+=1
 		#print
 		elif tokens[t] + " " + tokens[t+1][0:6] == "print string" or tokens[t] + " " + tokens[t+1][0:3] == "print num" or tokens[t] + " " + tokens[t+1][0:4] == "print expr" or tokens[t] + " " + tokens[t+1][0:3] == "print var":
 			if tokens[t+1][0:6] == "string":
