@@ -5,5 +5,7 @@ endif
 
 @github = "Hello github, im asterd, and this, is my language Askour"
 
+$this is a comment$
+
 print @github
 pause
