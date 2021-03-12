@@ -1,4 +1,9 @@
-@varint = 10
-@mystring = @varint
-print @varint
-print @mystring
+clear $clear the screen$
+if 1 == 1 then
+    print "math is correct"
+endif
+
+@github = "Hello github, im asterd, and this, is my language Askour"
+
+print @github
+pause
