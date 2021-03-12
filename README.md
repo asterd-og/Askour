@@ -6,6 +6,7 @@ Askour have:\
   if statement (now working, but only with numbers)\
   pause\
   clear\
+  comments\
   variables\
   numbers\
   input\
@@ -18,7 +19,7 @@ Look into main.asko
 
 ---------------------------------------------
 current working on:\
-  comments\
+  ~~comments~~\
   icon\
   ~~title~~\
   ~~if statement~~
