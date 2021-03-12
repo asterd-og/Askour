@@ -3,7 +3,7 @@ Askour programming language is now in 0.0.2!
 
 Askour have:\
   print\
-  if statement\
+  if statement (now working, but only with numbers)\
   variables\
   numbers\
   input\
@@ -16,6 +16,12 @@ Example:\
 @n = 10   --number\
 @b = @a   --a var inside of a var\
 input "Your name> " @name --a var named name, that will have the innput answer\
+if 1 == 1 then
+  print "Hello world"
+endif
+if 2 == 1 then
+  print "Math is wrong..."
+endif
 print @name --print name
 
 ---------------------------------------------
@@ -23,7 +29,7 @@ current working on:\
   comments\
   icon\
   ~~title~~\
-  if statement
+  ~~if statement~~
 
 ---------------------------------------------
 how to run:
