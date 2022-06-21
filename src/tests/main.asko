@@ -1,0 +1,4 @@
+v0 main() {
+    string b = "Hello World\n";
+    int a = 5;
+}
