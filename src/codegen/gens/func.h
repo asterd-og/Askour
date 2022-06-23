@@ -12,4 +12,5 @@ namespace func {
     bool exists(std::string name);
     bool is_str(std::string name);
     void def(parser::node node, int index, std::vector<parser::node> ast);
+    void call(parser::node node, int index, std::vector<parser::node> ast);
 }

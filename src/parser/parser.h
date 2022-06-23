@@ -57,7 +57,9 @@ namespace parser {
         cond condition;
     };
 
+    void error(std::string fmt, ...);
     void init(std::vector<lexer::token> toks);
     void peek(std::vector<node> ast);
     std::vector<node> parse();
+    lexer::token eat(lexer::tok_type token);
 }

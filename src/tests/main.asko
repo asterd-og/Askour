@@ -1,4 +1,3 @@
 v0 main() {
-    string b = "Hello World\n";
-    int a = 5;
+    print("Hello World of Askour!\n");
 }

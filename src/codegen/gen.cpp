@@ -17,8 +17,17 @@ namespace gen {
         va_start(args, fmt);
         vsprintf(bf.data(), fmt.c_str(), args);
         va_end(args);
-        printf("[Gen]: %s\n", bf.data());
+        printf("[Gen]: Error: %s\n", bf.data());
         exit(1);
+    }
+
+    void warn(std::string fmt, ...) {
+        va_list args;
+        std::string bf;
+        va_start(args, fmt);
+        vsprintf(bf.data(), fmt.c_str(), args);
+        va_end(args);
+        printf("[Gen]: Warning: %s\n", bf.data());
     }
 
     void set_current_func(std::string name) {
@@ -33,6 +42,7 @@ namespace gen {
         ast = gast;
 
         funcs[N_func_def] = &func::def;
+        funcs[N_func_call] = &func::call;
         funcs[N_var_def]  = &var::gen;
     }
 

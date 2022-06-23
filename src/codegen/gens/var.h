@@ -12,6 +12,7 @@ namespace var {
     bool        type_exists(std::string type);
 
     bool        exists(std::string name);
+    bool        is_ptr(std::string name);
 
     void        _new(std::string type, std::string name, std::string value, bool string, bool ptr);
     int         get(std::string name);

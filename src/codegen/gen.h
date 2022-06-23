@@ -16,6 +16,7 @@
 namespace gen {
 	extern std::map<std::string, std::string> fasm;
 	void error(std::string fmt, ...);
+	void warn(std::string fmt, ...);
 	void init(std::vector<parser::node> ast);
 	std::string run();
 	int peek(int index, std::vector<parser::node> ast);

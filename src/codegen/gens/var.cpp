@@ -1,15 +1,16 @@
 #include <codegen/gens/var.h>
 #include <codegen/gens/func.h>
+#include <codegen/gens/string.h>
 #include <codegen/gen.h>
 #include <codegen/utils.h>
 #include <lexer/lexer.h>
-
+#include <stdbool.h>
 
 namespace var {
     std::map<std::string, int>           vars;
+    std::map<std::string, bool>          vars_ptrs;
     std::map<std::string, std::string>   vars_type;
     int last_stack=0;
-    int last_tstr=0;
 
     std::map<std::string, int> types = {
         {"int", 4},
@@ -32,22 +33,20 @@ namespace var {
         return ( vars.find(name) != vars.end() );
     }
 
-    void _new(std::string type, std::string name, std::string value, bool string, bool ptr) {
+    bool is_ptr(std::string name) {
+        return vars_ptrs[name];
+    }
+
+    void _new(std::string type, std::string name, std::string value, bool str, bool ptr) {
         if (type_exists) {
             update_stack(type);
             vars_type[name]=type;
             vars[name]=get_stack();
+            vars_ptrs[name]=ptr;
 
-            if (string) {
-                std::string old_fname=gen::get_current_func();
-                std::string fname=utils::fmt("_$.TSTR%d", last_tstr);
-                func::_new(fname.c_str(), true);
-                gen::set_current_func(fname.c_str());
-            
-                gen::emit(utils::fmt("\t.string \"%s\"", value.c_str()));
-
-                gen::set_current_func(old_fname);
-                gen::emit(utils::fmt("\tmov qword ptr[rbp-%d], offset flat: %s", get_stack(), fname.c_str()));
+            if (str) {
+                std::string fname=string::_new(value);
+                gen::emit(utils::fmt("\tmov qword ptr[rbp-%d], %s", get_stack(), fname.c_str()));
             } else {
                 gen::emit(utils::fmt("\tmov %s ptr[rbp-%d], %s", (ptr?"qword":"dword"), get_stack(), value.c_str()));
             }
