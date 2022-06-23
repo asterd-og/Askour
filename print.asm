@@ -1,3 +1,5 @@
+; This file is just for testing!
+
 [GLOBAL print]
 
 print:
