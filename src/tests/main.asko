@@ -1,3 +1,9 @@
 v0 main() {
-    print("Hello World of Askour!\n");
+    o_main("Hello world from a function.\n");
+    o_main("haha sheeeeeeeeeeeesh\n");
+    o_main("compilin'\n");
+}
+
+v0 o_main(string a) {
+    print(a);
 }

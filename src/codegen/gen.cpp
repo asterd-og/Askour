@@ -82,10 +82,11 @@ namespace gen {
                 out.append(piece.second);
                 if (!func::is_str(piece.first) && piece.first!="_$.EXIT") {
                     out.append("\tnop\n");
-                    out.append("\tpop rbp\n");
                     if (piece.first=="main") {
+                        out.append("\tpop rbp\n");
                         out.append("\tjmp _$.EXIT\n");
                     } else {
+                        out.append("\tleave\n");
                         out.append("\tret\n");
                     }
                 }
