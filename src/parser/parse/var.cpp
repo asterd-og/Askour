@@ -1,10 +1,16 @@
 #include <parser/parse/var.h>
+#include <parser/parse/expression.h>
 
 namespace parser {
     using namespace lexer;
 
+    void parse_factor() {
+    }
+
     void parse_vardef(std::string type, std::string name, std::vector<node>* ast) {
         eat(tok_type::T_EQ);
+
+        std::vector<expr> _expr = parse_expression();
 
         node n={
             .type=N_var_def,
@@ -18,17 +24,9 @@ namespace parser {
                 .data=name,
                 .type=tok_type::T_ID,
             },
-            .value={
-                .data=current_token.value,
-                .type=current_token.type
-            }
+            ._expr=_expr
         };
 
-
-        eat(current_token.type); //value
-
         ast->push_back(n);
-
-        eat(T_SEMI);
     }
 }

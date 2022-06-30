@@ -10,18 +10,14 @@ namespace parser {
             eat(tok_type::T_LPAR);
             while (get_token() != tok_type::T_RPAR) {
                 if (get_token() != tok_type::T_ID) {
-                    error("Expected identifier but got '%s' at %d:%d.",
-                          type2str(current_token.type).data(),
-                          current_token.line,
-                          current_token.col);
+                    error("Expected identifier but got '%s'.",
+                          type2str(current_token.type).data());
                 }
                 std::string type = current_token.value;
                 eat(tok_type::T_ID);
                 if (get_token() != tok_type::T_ID) {
-                    error("Expected ID but got '%s' at %d:%d.",
-                          type2str(current_token.type).data(),
-                          current_token.line,
-                          current_token.col);
+                    error("Expected ID but got '%s'.",
+                          type2str(current_token.type).data());
                 }
                 std::string name = current_token.value;
                 eat(tok_type::T_ID);
@@ -49,10 +45,8 @@ namespace parser {
                     args.push_back(v);
                     eat(get_token());
                 } else {
-                    error("Expected argument but got '%s' at %d:%d.",
-                          type2str(current_token.type).data(),
-                          current_token.line,
-                          current_token.col);
+                    error("Expected argument but got '%s'.",
+                          type2str(current_token.type).data());
                 }
                 if (get_token() != tok_type::T_RPAR) eat(tok_type::T_COMMA);
             }

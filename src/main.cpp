@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
 
         gen::init(AST);
         std::string o=gen::run();
-
+        
         std::ofstream file_out;
 
         file_out.open("askour_file_out_temp.asm");
@@ -42,6 +42,7 @@ int main(int argc, char** argv) {
         }
         file_out << o;
         file_out.close();
+        
     } else {
         printf("Error: Could not open file '%s'.\n", argv[1]);
         exit(EXIT_FAILURE);

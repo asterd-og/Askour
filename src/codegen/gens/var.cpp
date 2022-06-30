@@ -72,6 +72,27 @@ namespace var {
         vars[gen::get_current_func()][name]=index;
     }
 
+    bool is_normal_math(std::vector<parser::expr> _expr) {
+        for (parser::expr _e : _expr) {
+            switch (_e.type) {
+                case lexer::tok_type::T_ID:
+                    return false;
+                    break;
+            }
+        }
+        return true;
+    }
+
+    bool is_math(std::vector<parser::expr> _expr) {
+        if (_expr[0].type==lexer::tok_type::T_ID || _expr[0].type==lexer::tok_type::T_NUM || _expr[0].type==lexer::tok_type::T_STR) {
+            //basically, if the calc type is ID/NUM
+            //which in this case, would be ADD or SUB
+            //its just an ID/NUM reference
+            return false;
+        }
+        return true;
+    }
+
     void _new(std::string type, std::string name, std::string value, bool str, bool ptr) {
         if (type_exists) {
             update_stack(type);
@@ -133,7 +154,51 @@ namespace var {
     void gen(parser::node node, int index, std::vector<parser::node> ast) {
         std::string name=node.middle.data;
         std::string type=node.left.data;
-        std::string value=node.value.data;
-        _new(type, name, value, (node.value.type==lexer::tok_type::T_STR), node.ptr);
+        int value=0;
+        std::string _value;
+        if (is_math(node._expr)) {
+            //for now, only handle this
+            if (is_normal_math(node._expr)) {
+                for (parser::expr _e : node._expr) {
+                    switch (_e.type) {
+                        //I am not proud of the code ahead.
+                        case lexer::tok_type::T_ADD:
+                            if (_e._continue==false) {
+                                value=std::stoi(_e.left.data)+std::stoi(_e.right.data);
+                            } else {
+                                value+=std::stoi(_e.left.data);
+                            }
+                            break;
+                        case lexer::tok_type::T_SUB:
+                            if (_e._continue==false) {
+                                value=std::stoi(_e.left.data)-std::stoi(_e.right.data);
+                            } else {
+                                value-=std::stoi(_e.left.data);
+                            }
+                            break;
+                        case lexer::tok_type::T_DIV:
+                            if (_e._continue==false) {
+                                value=std::stoi(_e.left.data)/std::stoi(_e.right.data);
+                            } else {
+                                value/=std::stoi(_e.left.data);
+                            }
+                            break;
+                        case lexer::tok_type::T_MUL:
+                            if (_e._continue==false) {
+                                value=std::stoi(_e.left.data)*std::stoi(_e.right.data);
+                            } else {
+                                value*=std::stoi(_e.left.data);
+                            }
+                            break;
+                    }
+                }
+                _value=std::to_string(value);
+            } else {
+                gen::error("Not implemented.");
+            }
+        } else {
+            _value=node._expr[0].left.data;
+        }
+        _new(type, name, _value, (node._expr[0].type==lexer::tok_type::T_STR), node.ptr);
     }
 }

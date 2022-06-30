@@ -152,6 +152,9 @@ namespace lexer {
                     c=code[pos];
                     col++;
                 }
+            } else {
+                //its division operator!
+                add_token("/", tok_type::T_DIV);
             }
         }
         //CONDITIONS
@@ -191,7 +194,9 @@ namespace lexer {
             } else {
                 lex_error("Expected token '%c' at %d:%d\n", '=', line, col);
             }
-        } else if (c=='+') {
+        }
+        //EXPRESSIONS
+        else if (c=='+') {
             if (code[pos+1]=='=') {
                 pos++;
                 add_token("+=", tok_type::T_ADDEQ);
@@ -199,6 +204,24 @@ namespace lexer {
                 col++;
             } else {
                 add_token("+", tok_type::T_ADD);
+            }
+        } else if (c=='-') {
+            if (code[pos+1]=='=') {
+                pos++;
+                add_token("-=", tok_type::T_SUBEQ);
+                col++;
+                col++;
+            } else {
+                add_token("-", tok_type::T_SUB);
+            }
+        } else if (c=='*') {
+            if (code[pos+1]=='=') {
+                pos++;
+                add_token("*=", tok_type::T_MULEQ);
+                col++;
+                col++;
+            } else {
+                add_token("*", tok_type::T_MUL);
             }
         } else {
             col++;

@@ -1,9 +1,5 @@
 v0 main() {
-    o_main("Hello world from a function.\n");
-    o_main("haha sheeeeeeeeeeeesh\n");
-    o_main("compilin'\n");
-}
-
-v0 o_main(string a) {
-    print(a);
+    string b="Hello world.\n";
+    int    c=5+5/2*2;
+    print(b);
 }

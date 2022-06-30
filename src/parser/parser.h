@@ -21,7 +21,8 @@ namespace parser {
         N_global,
         N_ret,
         N_if,
-        N_else
+        N_else,
+        N_expr //well... now the fun begins!
     } node_type;
 
     struct val {
@@ -34,6 +35,14 @@ namespace parser {
         val left;
         val middle;
         val right;
+    };
+
+    struct expr {
+        lexer::tok_type type;
+        val left;
+        val right;
+        val value;
+        bool _continue;
     };
 
     struct node {
@@ -55,6 +64,8 @@ namespace parser {
         std::vector<val> cargs;
 
         cond condition;
+
+        std::vector<expr> _expr;
     };
 
     void error(std::string fmt, ...);

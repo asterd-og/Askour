@@ -27,10 +27,8 @@ namespace parser {
                     parse_vardef(type, name, ast);
                     break;
                 default:
-                    error("Unexpected token '%s' at %d:%d.",
-                            type2str(current_token.type).data(),
-                            current_token.line,
-                            current_token.col);
+                    error("Unexpected token '%s'.",
+                            type2str(current_token.type).data());
                     break;
             }
         } else if (t==tok_type::T_LPAR) {
@@ -40,10 +38,8 @@ namespace parser {
             //id ;
             parse_funccall(type, ast);
         } else {
-            error("Unexpected token '%s' at %d:%d.",
-                    type2str(current_token.type).data(),
-                    current_token.line,
-                    current_token.col);
+            error("Unexpected token '%s'.",
+                    type2str(current_token.type).data());
         }
     }
 }

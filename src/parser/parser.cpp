@@ -11,18 +11,15 @@ namespace parser {
         va_start(args, fmt);
         vsprintf((char*)buffer.data(), fmt.c_str(), args);
         va_end(args);
-        printf("[Parser]: %s\n", buffer.data());
+        printf("[Parser]: %d:%d -> %s\n", current_token.line, current_token.col, buffer.c_str());
         exit(EXIT_FAILURE);
     }
 
     token eat(tok_type token) {
         if (get_token() != token) {
-            printf("Error: Expected token '%s' but got '%s' at %d:%d.\n",
+            error("Expected token '%s' but got '%s'.\n",
                    type2str(token).data(),
-                   type2str(current_token.type).data(),
-                   current_token.line,
-                   current_token.col);
-            exit(EXIT_FAILURE);
+                   type2str(current_token.type).data());
         }
         advance();
         return current_token;
